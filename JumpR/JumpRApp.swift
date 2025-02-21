@@ -9,9 +9,25 @@ import SwiftUI
 
 @main
 struct JumpRApp: App {
+    @State var showLaunchscreen: Bool = true
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ZStack {
+                if showLaunchscreen {
+                    LaunchScreen()
+                        .ignoresSafeArea()
+                        .onAppear {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                                self.showLaunchscreen = false
+                            }
+                        }
+                } else {
+                    ContentView()
+                }
+                
+            }
+            
         }
     }
 }
