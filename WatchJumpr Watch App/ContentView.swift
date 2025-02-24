@@ -5,10 +5,16 @@
 //  Created by Maxime Tanter on 31/01/2025.
 //
 
+import SwiftData
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject private var workoutManager = WorkoutManager()
+    @Environment(\.modelContext) private var modelContext
+    @StateObject private var workoutManager: WorkoutManager
+
+    init(modelContext: ModelContext) {
+        _workoutManager = StateObject(wrappedValue: WorkoutManager(modelContext: modelContext))
+    }
 
     var body: some View {
         if workoutManager.isWorkoutInProgress {
@@ -128,6 +134,6 @@ struct AdjustJumpCountView: View {
     }
 }
 
-#Preview {
-    ContentView()
-}
+// #Preview {
+//    ContentView()
+// }

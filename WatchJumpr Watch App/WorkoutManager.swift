@@ -4,11 +4,13 @@
 //
 //  Created by Maxime Tanter on 31/01/2025.
 //
- 
+
 import CoreMotion
 import Foundation
 import HealthKit
+import SwiftData
 
+@MainActor
 class WorkoutManager: NSObject, ObservableObject {
     @Published var isWorkoutInProgress = false
     @Published var jumpCount = 0
@@ -18,13 +20,15 @@ class WorkoutManager: NSObject, ObservableObject {
     private var motionManager: CMMotionManager?
     private var timer: Timer?
     private var lastJumpTime: Date?
+    private let modelContext: ModelContext
 
     // Threshold for jump detection - lowered for better sensitivity
     private let jumpThreshold: Double = 1.2
     // Adding minimum threshold to filter out small movements
     private let minimumThreshold: Double = 0.5
 
-    override init() {
+    init(modelContext: ModelContext) {
+        self.modelContext = modelContext
         super.init()
         motionManager = CMMotionManager()
     }
@@ -58,7 +62,16 @@ class WorkoutManager: NSObject, ObservableObject {
         timer?.invalidate()
         timer = nil
         isWorkoutInProgress = false
-        // Save workout data here
+
+        // Save workout data
+        let workout = WorkoutData(jumpCount: jumpCount, duration: elapsedTime)
+        modelContext.insert(workout)
+
+        do {
+            try modelContext.save()
+        } catch {
+            print("Error saving workout: \(error)")
+        }
     }
 
     private func detectJump(acceleration: CMAcceleration) {

@@ -5,29 +5,25 @@
 //  Created by Maxime Tanter on 09/01/2025.
 //
 
+import SwiftData
 import SwiftUI
 
 @main
 struct JumpRApp: App {
-    @State var showLaunchscreen: Bool = true
-    
+    let container: ModelContainer
+
+    init() {
+        do {
+            container = try ModelContainer(for: WorkoutData.self)
+        } catch {
+            fatalError("Failed to initialize SwiftData container: \(error)")
+        }
+    }
+
     var body: some Scene {
         WindowGroup {
-            ZStack {
-                if showLaunchscreen {
-                    LaunchScreen()
-                        .ignoresSafeArea()
-                        .onAppear {
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                                self.showLaunchscreen = false
-                            }
-                        }
-                } else {
-                    ContentView()
-                }
-                
-            }
-            
+            ContentView()
         }
+        .modelContainer(container)
     }
 }

@@ -79,11 +79,21 @@
 			);
 			target = 9C93CCDB2D30226F00CF89F0 /* JumpR */;
 		};
+		9CA3DF692D6CE713005D3859 /* Exceptions for "WatchJumpr Watch App" folder in "JumpR" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				WorkoutData.swift,
+			);
+			target = 9C93CCDB2D30226F00CF89F0 /* JumpR */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		9C013CAA2D4D2F0000DB51FB /* WatchJumpr Watch App */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				9CA3DF692D6CE713005D3859 /* Exceptions for "WatchJumpr Watch App" folder in "JumpR" target */,
+			);
 			path = "WatchJumpr Watch App";
 			sourceTree = "<group>";
 		};
