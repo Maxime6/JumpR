@@ -14,7 +14,17 @@ struct WatchJumpr_Watch_AppApp: App {
 
     init() {
         do {
-            container = try ModelContainer(for: WorkoutData.self)
+            let schema = Schema([
+                WorkoutData.self,
+            ])
+            let modelConfiguration = ModelConfiguration(
+                schema: schema,
+                isStoredInMemoryOnly: false, cloudKitDatabase: .automatic
+            )
+            container = try ModelContainer(
+                for: schema,
+                configurations: [modelConfiguration]
+            )
         } catch {
             fatalError("Failed to initialize SwiftData container: \(error)")
         }

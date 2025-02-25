@@ -1,8 +1,8 @@
-import Foundation
-import SwiftData
+ import Foundation
+ import SwiftData
 
-@Model
-final class WorkoutData {
+ @Model
+ final class WorkoutData {
     var jumpCount: Int
     var duration: TimeInterval
     var date: Date
@@ -12,4 +12,4 @@ final class WorkoutData {
         self.duration = duration
         self.date = date
     }
-}
+ }

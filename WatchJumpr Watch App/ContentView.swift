@@ -20,7 +20,9 @@ struct ContentView: View {
         if workoutManager.isWorkoutInProgress {
             WorkoutView(workoutManager: workoutManager)
         } else {
-            StartWorkoutView(workoutManager: workoutManager)
+            NavigationStack {
+                StartWorkoutView(workoutManager: workoutManager)
+            }
         }
     }
 }
@@ -29,13 +31,21 @@ struct StartWorkoutView: View {
     @ObservedObject var workoutManager: WorkoutManager
 
     var body: some View {
-        Button(action: {
-            workoutManager.startWorkout()
-        }) {
-            Text("Start")
-                .font(.title2)
-                .foregroundColor(.blue)
-                .padding()
+        VStack(spacing: 20) {
+            Button(action: {
+                workoutManager.startWorkout()
+            }) {
+                Text("Start Workout")
+                    .font(.title2)
+                    .foregroundColor(.blue)
+                    .padding()
+            }
+
+            NavigationLink(destination: WorkoutHistoryView()) {
+                Text("View History")
+                    .font(.headline)
+                    .foregroundColor(.green)
+            }
         }
     }
 }
