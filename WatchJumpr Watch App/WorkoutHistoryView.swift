@@ -4,7 +4,7 @@ import SwiftUI
 struct WorkoutHistoryView: View {
     @Query(sort: \WorkoutData.date, order: .reverse) private var workouts: [WorkoutData]
     @Environment(\.modelContext) private var modelContext
-    
+
     var body: some View {
         ScrollView {
             LazyVStack(spacing: 10) {
