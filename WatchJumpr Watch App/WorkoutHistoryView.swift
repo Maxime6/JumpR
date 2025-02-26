@@ -4,15 +4,9 @@ import SwiftUI
 struct WorkoutHistoryView: View {
     @Query(sort: \WorkoutData.date, order: .reverse) private var workouts: [WorkoutData]
     @Environment(\.modelContext) private var modelContext
-
+    
     var body: some View {
         ScrollView {
-            if !workouts.isEmpty {
-                WorkoutStatsView(workouts: workouts)
-                    .padding(.horizontal)
-                    .padding(.top)
-            }
-
             LazyVStack(spacing: 10) {
                 ForEach(workouts) { workout in
                     WorkoutRowView(workout: workout)
@@ -29,7 +23,10 @@ struct WorkoutHistoryView: View {
             }
             .padding(.vertical)
         }
-        .navigationTitle("History")
+        .tag(1)
+        .tabItem {
+            Label("List", systemImage: "list.bullet")
+        }
     }
 }
 
@@ -62,7 +59,7 @@ struct WorkoutStatsView: View {
             StatView(title: "Total Time", value: formatTotalDuration(totalDuration), subtitle: "")
         }
         .padding()
-        .background(Color.blue.opacity(0.1))
+        .background(.ultraThinMaterial)
         .cornerRadius(10)
     }
 
@@ -123,14 +120,14 @@ struct WorkoutRowView: View {
             }
         }
         .padding()
-        .background(Color.blue.opacity(0.1))
+        .background(.ultraThinMaterial)
         .cornerRadius(10)
     }
 
     private func formatDate(_ date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateStyle = .short
-        formatter.timeStyle = .short
+        formatter.timeStyle = .none
         return formatter.string(from: date)
     }
 

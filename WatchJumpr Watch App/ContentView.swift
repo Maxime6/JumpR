@@ -11,6 +11,7 @@ import SwiftUI
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @StateObject private var workoutManager: WorkoutManager
+    @Query(sort: \WorkoutData.date, order: .reverse) private var workouts: [WorkoutData]
 
     init(modelContext: ModelContext) {
         _workoutManager = StateObject(wrappedValue: WorkoutManager(modelContext: modelContext))
@@ -20,8 +21,34 @@ struct ContentView: View {
         if workoutManager.isWorkoutInProgress {
             WorkoutView(workoutManager: workoutManager)
         } else {
-            NavigationStack {
+            TabView {
                 StartWorkoutView(workoutManager: workoutManager)
+                    .tag(0)
+                    .tabItem {
+                        Label("Workout", systemImage: "figure.run")
+                    }
+
+                WorkoutHistoryView()
+                    .tag(1)
+                    .tabItem {
+                        Label("History", systemImage: "clock")
+                    }
+                
+                ScrollView {
+                    if !workouts.isEmpty {
+                        WorkoutStatsView(workouts: workouts)
+                            .padding(.horizontal)
+                            .padding(.top)
+                    } else {
+                        Text("No workouts yet")
+                            .foregroundColor(.gray)
+                            .padding(.top)
+                    }
+                }
+                .tag(0)
+                .tabItem {
+                    Label("Stats", systemImage: "chart.bar.fill")
+                }
             }
         }
     }
@@ -32,20 +59,21 @@ struct StartWorkoutView: View {
 
     var body: some View {
         VStack(spacing: 20) {
+            Text("Ready to Jump?")
+                .font(.title3)
+                .padding(.top)
+
             Button(action: {
                 workoutManager.startWorkout()
             }) {
-                Text("Start Workout")
-                    .font(.title2)
-                    .foregroundColor(.blue)
-                    .padding()
+                HStack(spacing: 8) {
+                    Image(systemName: "figure.jumprope")
+                        .font(.system(size: 30))
+                    Text("Start")
+                        .font(.headline)
+                }
             }
-
-            NavigationLink(destination: WorkoutHistoryView()) {
-                Text("View History")
-                    .font(.headline)
-                    .foregroundColor(.green)
-            }
+            .buttonStyle(.borderedProminent)
         }
     }
 }
