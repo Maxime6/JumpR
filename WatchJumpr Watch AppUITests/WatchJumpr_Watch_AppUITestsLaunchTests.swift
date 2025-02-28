@@ -1,13 +1,13 @@
 //
-//  JumpRUITestsLaunchTests.swift
-//  JumpRUITests
+//  WatchJumpr_Watch_AppUITestsLaunchTests.swift
+//  WatchJumpr Watch AppUITests
 //
-//  Created by Maxime Tanter on 09/01/2025.
+//  Created by Maxime Tanter on 31/01/2025.
 //
 
 import XCTest
 
-final class JumpRUITestsLaunchTests: XCTestCase {
+final class WatchJumpr_Watch_AppUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

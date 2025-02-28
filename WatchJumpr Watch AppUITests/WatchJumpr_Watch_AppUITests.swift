@@ -1,13 +1,13 @@
 //
-//  JumpRUITests.swift
-//  JumpRUITests
+//  WatchJumpr_Watch_AppUITests.swift
+//  WatchJumpr Watch AppUITests
 //
-//  Created by Maxime Tanter on 09/01/2025.
+//  Created by Maxime Tanter on 31/01/2025.
 //
 
 import XCTest
 
-final class JumpRUITests: XCTestCase {
+final class WatchJumpr_Watch_AppUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
