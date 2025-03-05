@@ -29,6 +29,7 @@ struct AdjustJumpCountView: View {
                         Image(systemName: "minus.circle.fill")
                             .font(.title)
                     }
+                    .buttonStyle(.plain)
 
                     Text("\(adjustedCount)")
                         .font(.system(size: 40, weight: .bold))
@@ -38,6 +39,7 @@ struct AdjustJumpCountView: View {
                         Image(systemName: "plus.circle.fill")
                             .font(.title)
                     }
+                    .buttonStyle(.plain)
                 }
                 .padding()
 

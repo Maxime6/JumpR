@@ -26,7 +26,16 @@ struct StartWorkoutView: View {
                         .font(.headline)
                 }
             }
-            .buttonStyle(.borderedProminent)
+            .buttonStyle(.plain)
+            .padding(.horizontal, 15)
+            .padding()
+            .background(.blue.gradient)
+            .clipShape(.capsule)
         }
     }
+}
+
+#Preview {
+    let preview = PreviewContainer()
+    StartWorkoutView(workoutManager: WorkoutManager(modelContext: preview.modelContainer.mainContext))
 }
