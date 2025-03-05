@@ -58,3 +58,7 @@ struct AdjustJumpCountView: View {
         }
     }
 }
+
+#Preview {
+    AdjustJumpCountView(jumpCount: 100, isPresented: .constant(true), onSave: {_ in })
+}
