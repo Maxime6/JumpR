@@ -1,3 +1,12 @@
+//
+//  WorkoutStatsView.swift
+//  JumpR
+//
+//  Created by Maxime Tanter on 05/03/2025.
+//
+
+import SwiftUI
+
 struct WorkoutStatsView: View {
     let workouts: [WorkoutData]
 
@@ -40,4 +49,8 @@ struct WorkoutStatsView: View {
             return "\(minutes)m"
         }
     }
+}
+
+#Preview {
+    WorkoutStatsView(workouts: WorkoutData.sampleWorkouts)
 }

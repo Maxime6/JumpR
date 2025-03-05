@@ -1,3 +1,12 @@
+//
+//  WorkoutRowView.swift
+//  JumpR
+//
+//  Created by Maxime Tanter on 05/03/2025.
+//
+
+import SwiftUI
+
 struct WorkoutRowView: View {
     let workout: WorkoutData
 
@@ -37,4 +46,8 @@ struct WorkoutRowView: View {
         let seconds = Int(duration) % 60
         return String(format: "%d:%02d", minutes, seconds)
     }
+}
+
+#Preview {
+    WorkoutRowView(workout: WorkoutData.sampleWorkouts[0])
 }

@@ -1,3 +1,12 @@
+//
+//  StatView.swift
+//  JumpR
+//
+//  Created by Maxime Tanter on 05/03/2025.
+//
+
+import SwiftUI
+
 struct StatView: View {
     let title: String
     let value: String
@@ -19,4 +28,8 @@ struct StatView: View {
         }
         .frame(maxWidth: .infinity)
     }
+}
+
+#Preview {
+    StatView(title: "Total", value: "600", subtitle: "jumps")
 }

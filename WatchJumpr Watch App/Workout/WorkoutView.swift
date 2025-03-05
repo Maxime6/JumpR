@@ -48,3 +48,8 @@ struct WorkoutView: View {
         return String(format: "%02d:%02d", minutes, seconds)
     }
 }
+
+#Preview {
+    let preview = PreviewContainer()
+    WorkoutView(workoutManager: WorkoutManager(modelContext: preview.modelContainer.mainContext))
+}
