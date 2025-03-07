@@ -36,8 +36,6 @@ struct WorkoutStatsView: View {
             StatView(title: "Total Time", value: formatTotalDuration(totalDuration), subtitle: "")
         }
         .padding()
-        .background(.ultraThinMaterial)
-        .cornerRadius(10)
     }
 
     private func formatTotalDuration(_ duration: TimeInterval) -> String {

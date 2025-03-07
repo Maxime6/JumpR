@@ -19,24 +19,28 @@ struct WorkoutRowView: View {
 
                     Text(formatDuration(workout.duration))
                         .font(.subheadline)
-                        .foregroundColor(.gray)
+                        .foregroundColor(.secondary)
                 }
 
                 Spacer()
 
-                Text(formatDate(workout.date))
-                    .font(.caption)
-                    .foregroundColor(.gray)
+                VStack(alignment: .trailing) {
+                    Text("35 kal")
+                        .font(.headline)
+                    Text(formatDate(workout.date))
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                }
             }
         }
         .padding()
-        .background(.ultraThinMaterial)
-        .cornerRadius(10)
+        .background(.orange.gradient.opacity(1), in: .rect(cornerRadius: 15))
+//        .cornerRadius(10)
     }
 
     private func formatDate(_ date: Date) -> String {
         let formatter = DateFormatter()
-        formatter.dateStyle = .short
+        formatter.dateStyle = .medium
         formatter.timeStyle = .none
         return formatter.string(from: date)
     }
