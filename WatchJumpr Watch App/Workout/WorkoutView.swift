@@ -32,7 +32,7 @@ struct WorkoutView: View {
                     }
                 )
             }
-            
+
             VStack {
                 HStack {
                     Image(systemName: "figure.jumprope.circle.fill")
@@ -41,46 +41,44 @@ struct WorkoutView: View {
                         .frame(width: 44, height: 44)
                         .padding(.top, -5)
                         .padding(.leading, 8)
-                    
+
                     Spacer()
                 }
-                
+
                 HStack {
                     VStack(alignment: .leading) {
                         Text(timeString(from: workoutManager.elapsedTime))
                             .font(.title.bold())
-                        
+
                         HStack {
                             Text("\(workoutManager.jumpCount)")
                                 .font(.title2)
                                 .foregroundColor(.green)
-                            
+
                             Text("Jumps")
                                 .font(.caption)
                                 .foregroundStyle(.secondary)
                         }
-                        
+
                         HStack {
-                            // TODO: Connect calories manager
-                            Text("100")
+                            Text("\(Int(workoutManager.activeEnergy))")
                                 .font(.title2)
-                            
+
                             Text("KCAL")
                                 .font(.caption)
                                 .foregroundStyle(.secondary)
                         }
-                        
+
                         HStack {
-                            // TODO: Connect heart rate manager
-                            Text("130")
+                            Text("\(Int(workoutManager.heartRate))")
                                 .font(.title2)
-                            
+
                             Image(systemName: "heart.fill")
                                 .foregroundStyle(.red)
                         }
                     }
                     .padding()
-                    
+
                     Spacer()
                 }
             }
