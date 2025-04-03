@@ -12,33 +12,78 @@ struct WorkoutView: View {
     @State private var showingAdjustment = false
 
     var body: some View {
-        VStack(spacing: 15) {
-            Text("\(workoutManager.jumpCount)")
-                .font(.system(size: 40, weight: .bold))
-                .foregroundColor(.green)
-
-            Text("Jumps")
-                .font(.headline)
-
-            Text(timeString(from: workoutManager.elapsedTime))
-                .font(.system(.title3, design: .monospaced))
-
-            Button(action: {
-                showingAdjustment = true
-            }) {
-                Text("End Workout")
-                    .foregroundColor(.red)
-            }
-        }
-        .sheet(isPresented: $showingAdjustment) {
-            AdjustJumpCountView(
-                jumpCount: workoutManager.jumpCount,
-                isPresented: $showingAdjustment,
-                onSave: { adjustedCount in
-                    workoutManager.jumpCount = adjustedCount
-                    workoutManager.stopWorkout()
+        TabView {
+            ZStack {
+                Button(action: {
+                    showingAdjustment = true
+                }) {
+                    Text("End Workout")
+                        .foregroundColor(.red)
                 }
-            )
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .sheet(isPresented: $showingAdjustment) {
+                AdjustJumpCountView(
+                    jumpCount: workoutManager.jumpCount,
+                    isPresented: $showingAdjustment,
+                    onSave: { adjustedCount in
+                        workoutManager.jumpCount = adjustedCount
+                        workoutManager.stopWorkout()
+                    }
+                )
+            }
+            
+            VStack {
+                HStack {
+                    Image(systemName: "figure.jumprope.circle.fill")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 44, height: 44)
+                        .padding(.top, -5)
+                        .padding(.leading, 8)
+                    
+                    Spacer()
+                }
+                
+                HStack {
+                    VStack(alignment: .leading) {
+                        Text(timeString(from: workoutManager.elapsedTime))
+                            .font(.title.bold())
+                        
+                        HStack {
+                            Text("\(workoutManager.jumpCount)")
+                                .font(.title2)
+                                .foregroundColor(.green)
+                            
+                            Text("Jumps")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        }
+                        
+                        HStack {
+                            // TODO: Connect calories manager
+                            Text("100")
+                                .font(.title2)
+                            
+                            Text("KCAL")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        }
+                        
+                        HStack {
+                            // TODO: Connect heart rate manager
+                            Text("130")
+                                .font(.title2)
+                            
+                            Image(systemName: "heart.fill")
+                                .foregroundStyle(.red)
+                        }
+                    }
+                    .padding()
+                    
+                    Spacer()
+                }
+            }
         }
     }
 
