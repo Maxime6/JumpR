@@ -29,22 +29,9 @@
 		9C013CC22D4D2F0200DB51FB /* WatchJumpr Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "WatchJumpr Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		9C1418042D9F1D29000E3ADE /* Exceptions for "WatchJumpr Watch App" folder in "WatchJumpr Watch App" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				"WatchJumpr-Watch-App-Info.plist",
-			);
-			target = 9C013CA82D4D2F0000DB51FB /* WatchJumpr Watch App */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		9C013CAA2D4D2F0000DB51FB /* WatchJumpr Watch App */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				9C1418042D9F1D29000E3ADE /* Exceptions for "WatchJumpr Watch App" folder in "WatchJumpr Watch App" target */,
-			);
 			path = "WatchJumpr Watch App";
 			sourceTree = "<group>";
 		};
@@ -298,6 +285,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "WatchJumpr-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Jumpr;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Allow health informations access";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "We need to save health information to improve your experience";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.maximetanter.JumpR;
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
@@ -332,6 +321,8 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "WatchJumpr-Watch-App-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Jumpr;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Allow health informations access";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "We need to save health information to improve your experience";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.maximetanter.JumpR;
 				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
